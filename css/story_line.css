@@ -1,0 +1,61 @@
+  .background {
+    opacity:0.3;
+  }
+  .background_time_depth {
+    fill: #eee;
+  }
+
+  
+  .background_button {
+    /*stroke : #ddd!important;*/
+    /*fill : white;*/
+    stroke-opacity : 0.3 !important;
+  }
+  .background_button_slide .text{
+    fill: red !important;
+  }
+  .background_button_slide {
+    opacity: 0.3 !important;
+  }
+  .time_block {
+    /*fill: white;*/
+    stroke-width:5;
+    stroke:#ccc;
+  }
+  .line {
+      stroke-width: 1;
+      fill: #ddd
+  }
+  .section {
+    fill: white;
+    stroke-width:5;
+    stroke:#ccc;
+  }
+  .depth {
+    fill: #ddd;
+  }
+  .depth_block {
+    /*fill: white;*/
+    stroke-width:5;
+    stroke:#ccc;
+  }
+
+  .keyframes.highlight{
+    opacity : 1;
+  }
+
+  .keyframes.chosen{
+    opacity : 1;
+  }
+
+  .keyframes{
+    opacity : 0.3;
+  }
+
+
+
+
+
+  text{
+      fill: #111;
+  }

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Asteroid Visualization Analysis</title>
+
+  <link rel="stylesheet" href="css/d3-tip.css">
+  <link rel="stylesheet" href="css/table.css">
+  <link rel="stylesheet" href="css/story_line.css">
+  <style>
+
+  /* .simulation rect{} */
+  .seeBlack {
+    fill: black;
+  }
+  .channels.chosen rect{
+    fill: #a8ddb5!important;
+    stroke: #e0f3db!important!;
+    stroke-width: 3;
+  }
+
+  .simulation.chosen rect{
+    fill: #a8ddb5!important;
+    stroke: #e0f3db!important!;
+    stroke-width: 3;
+  }
+
+  .channels rect{
+    fill: white;
+    stroke: #ddd;
+    stroke-width: 3;
+  }
+  .simulation rect{
+    fill: white;
+    stroke: #ddd;
+    stroke-width: 3;
+  }
+
+  .channels.highlight rect{
+    fill: white;
+    stroke: #ddd;
+    stroke-width: 3;
+    /*stroke: #fec44f;
+    stroke-width: 6;*/
+  }
+
+  .simulation.highlight rect{
+    fill: white;
+    stroke: #fec44f;
+    stroke-width: 6;
+  }
+
+  .simulation_kuang{
+    fill: white;
+    stroke: #ddd;
+    stroke-width: 3;
+    fill-opacity: 0;
+  }
+
+  .kuang_rect {
+    fill: white;
+    stroke: #DDD;
+    stroke-width: 4;
+  }
+
+  .connect_line_background {
+    fill: none;
+    stroke: #ddd;
+    stroke-width: 2px;
+  }
+
+  .connect_line_foreground {
+    fill: none;
+    /* stroke: red; */
+    stroke-width: 10;
+    opacity: 0;
+  }
+
+  .highlight .connect_line_foreground {
+    fill: none;
+    stroke: #fdb462;
+    stroke-width: 3;
+    opacity: 1;
+  }
+
+  .compare.highlight rect {
+    stroke: #fec44f;
+    stroke-width: 4;
+    fill: #a8ddb5;
+    fill-opacity: 0.3;
+
+  }
+  .lines rect{
+    fill: #ddd;
+    stroke: #777;
+    stroke-width: 1;
+  }
+
+  .lines rect.line{
+    fill: #fff;
+    stroke: #777;
+    stroke-width: 1;
+  }
+
+  .lines.highlight rect.line{
+	 /*fill: green;*/
+
+     stroke: #fec44f;
+     stroke-width: 4;
+
+  }
+
+  .lines.chosen rect.line{
+     fill: #a8ddb5;
+	   /* stroke: #fec44f; */
+     /* stroke: #111; */
+     stroke-width: 3;
+     fill-opacity: 1;
+  }
+
+  text {
+    color: #111;
+  }
+  </style>
+</head>
+
+<body>
+  <div style = "position: absolute; top: 1%; left: 1%; width: 23%; height: 98%; margin: 0px; padding: 0px;">
+    <div class="kuang"  id ="try_3D_navigation" style = "position: absolute; top: 0%; left: 0%; width: 100%; height: 33%; margin: 0px; padding: 0px;">
+        <!-- chart -->
+    </div>
+    <div class="kuang" id = "choose_dataset" style = "position: absolute; top: 34%; left: 0%; width: 100%; height: 66%; margin: 0px; padding: 0px;">
+        <!-- menu -->
+
+    </div>
+  </div>
+
+  <div  id = "compare_story" style = "position: absolute; top: 1%; left: 26%; width: 73%; height: 98%; margin: 0px; padding: 0px;">
+    <!-- <div id = "compare_view" class="kuang" style = "position: absolute; top: 1%; left: 0.5%; width: 99%; height: 68%; margin: 0px; padding: 0px;">
+    </div>
+    <div class= "kuang" id = "story_line" style = "position: absolute; top: 70%; left: 0.5%; width: 99%; height: 29%; margin: 0px; padding: 0px;">
+    </div> -->
+  </div>
+
+  <script src = "js/cal_connect_line.js"></script>
+  <script src = "js/compare.js"></script>
+  <script src = "js/d3v4.js"></script>
+  <script src = "js/d3-tip.js"></script>
+  <script src = "js/3D_navigation.js"></script>
+  <script src = "js/storyline.js"></script>
+  <script src = "js/load_compare_story.js"></script>
+  <script src = "js/global_function.js"></script>
+  <!-- <script src = "https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script> -->
+  <script src = "js/jquery.min.js"></script>
+  <script src = "js/choose_dataset.js"></script>
+  <!-- <script src ="js/ych.js"></script> -->
+  <script>
+    // storyline_view()
+    add_navigation_effect()
+    // load_compare_view()
+    // d3.json("try.json",function(data){
+    //   console.log(data)
+    // })
+    d3.json("data/simulations.json", function(data){
+      global_data = data;
+      console.log(data);
+      init_simulation_timestep_status();
+      load_compare_story(data);
+      // load_storyline_view(data);
+      load_choose_dataset(data);
+      refresh_channel()
+    })
+
+  </script>
+
+
+</body>
